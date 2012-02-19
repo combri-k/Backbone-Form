@@ -1,0 +1,32 @@
+doctype 5
+html
+  head
+    title Backbone Form
+    script type="text/javascript" src="javascripts/jquery-min.js"
+    script type="text/javascript" src="javascripts/underscore-min.js"
+    script type="text/javascript" src="javascripts/backbone-min.js"
+    script type="text/javascript" src="javascripts/app.js"
+  body
+    h1 Form
+    form id="survey" action="endpoint" method="post"
+      #name
+        label for="name-field" Name
+        input id="name-field" name="name"
+      #age
+        label for="age-field" Age
+        select id="age-field" name="age"
+          - for i in 12..80
+            option[value=i]= i
+      #activities
+      #submit
+        input type="Submit" value="Send"
+    script type="text/html" id="activities-template"
+      p
+        | Activities
+        a id="add-activity" href="#" +
+      #activity-fields
+    script type="text/html" id="activity-template"
+      p id="activity-{{id}}" class="activity"
+        label for="activity-field-{{id}}" Activity
+        input id="activity-field-{{id}}" name="activity-{{id}}"
+        a id="remove-activity-{{id}}" class="remove-activity" href="#" -
